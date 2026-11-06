@@ -4,13 +4,8 @@
         "target": "ES2022",
         "outDir": "out",
         "rootDir": "src",
-        "lib": [
-            "ES2022"
-        ],
-        "types": [
-            "node",
-            "mocha"
-        ],
+        "lib": ["ES2022"],
+        "types": ["node", "vscode", "mocha"],
         "sourceMap": true,
         "strict": true,
         "esModuleInterop": true,
