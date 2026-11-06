@@ -17,7 +17,7 @@ export async function pushCommand() {
 
     try {
 
-        // Проверяем Git-репозиторий 1
+        // Проверяем Git-репозиторий
         if (!await git.checkRepository()) {
             throw new Error('Папка не является Git-репозиторием.');
         }
