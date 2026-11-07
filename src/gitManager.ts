@@ -12,11 +12,17 @@ export class GitManager {
     private executeGit(args: string[]): Promise<string> {
 
         return new Promise((resolve, reject) => {
-
+            // Обращение к консоли
             const process = spawn('git', args, {
                 cwd: this.workspacePath,
-                shell: false
+                shell: false,
+                env: {
+                    GIT_TERMINAL_PROMPT: '0', 
+                    GIT_ASKPASS: '',          
+                    SSH_ASKPASS: ''           
+                }
             });
+
 
             let output = '';
             let errorOutput = '';
@@ -127,7 +133,7 @@ export class GitManager {
         await this.executeGit([
             'push',
             remote,
-            `HEAD:refs/heads/${branch}`
+            branch
         ]);
     }
 
@@ -153,6 +159,4 @@ export class GitManager {
             })
             .filter((branch): branch is string => Boolean(branch));
     }
-
-
 }
